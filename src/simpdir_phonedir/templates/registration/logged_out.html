@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Logged Out{% endblock title %}
+{% block content %}
+    <div class="flex justify-center">
+        <div class="card bg-base-100 shadow-xl w-full max-w-md">
+            <div class="card-body items-center text-center">
+                <i class="fas fa-circle-check text-success text-5xl mb-2"></i>
+                <h2 class="card-title text-xl">You have been logged out.</h2>
+                <p class="text-sm text-base-content/70">Thanks for using SIMPDIR.</p>
+                <div class="card-actions mt-4">
+                    <a href="{% url 'login' %}" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i>Log In Again
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

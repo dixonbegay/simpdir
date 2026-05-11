@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}
+    Search Results
+{% endblock title %}
+{% block content %}
+    <main>
+        {% if contacts %}
+            <h2 class="text-xl font-bold mb-4">Contacts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                {% for contact in contacts %}
+                    <div class="card bg-base-100 shadow">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ contact.first_name }} {{ contact.last_name }}</h3>
+                            <p>
+                                <strong>Title:</strong> {{ contact.title }}
+                            </p>
+                            <p>
+                                <strong>Extension:</strong> {{ contact.extension }}
+                            </p>
+                            <p>
+                                <strong>Location:</strong> {{ contact.location }}
+                            </p>
+                            <p>
+                                <strong>Phone:</strong> {{ contact.phone }}
+                            </p>
+                            <p>
+                                <strong>Department:</strong>
+                                <a class="link" href="{% url 'department_detail' contact.department.short_name %}">{{ contact.department.name }}</a>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if users %}
+            <h2 class="text-xl font-bold mb-4">Users</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                {% for user in users %}
+                    <div class="card bg-base-100 shadow">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ user.first_name }} {{ user.last_name }}</h3>
+                            <p>
+                                <strong>Title:</strong> {{ user.title }}
+                            </p>
+                            <p>
+                                <strong>Department:</strong> {{ user.department }}
+                            </p>
+                            <p>
+                                <strong>Phone:</strong> {{ user.telephoneNumber }}
+                            </p>
+                            <p>
+                                <strong>Mobile:</strong> {{ user.mobile }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if not contacts and not users %}
+            <h3 class="text-xl font-bold">No results.</h3>
+        {% endif %}
+    </main>
+{% endblock content %}

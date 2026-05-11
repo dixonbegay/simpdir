@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+    <div class="flex justify-center">
+        <div class="card bg-base-100 shadow-xl w-full max-w-md">
+            <div class="card-body">
+                <h2 class="card-title text-xl justify-center">SIMPDIR Login</h2>
+                <p class="text-sm text-center text-base-content/70 mb-2">Use your corporate Active Directory credentials.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div role="alert" class="alert alert-error mb-4">
+                            <i class="fas fa-circle-xmark"></i>
+                            <div>
+                                {% for error in form.non_field_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Username</legend>
+                        <label class="input w-full">
+                            <i class="fas fa-user text-base-content/40"></i>
+                            <input type="text"
+                                   name="username"
+                                   autofocus
+                                   autocomplete="username"
+                                   placeholder="AD Username (e.g., jsmith)" />
+                        </label>
+                        {% if form.username.errors %}
+                            <p class="text-error text-xs mt-1">{{ form.username.errors|join:", " }}</p>
+                        {% endif %}
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Password</legend>
+                        <label class="input w-full">
+                            <i class="fas fa-lock text-base-content/40"></i>
+                            <input type="password"
+                                   name="password"
+                                   autocomplete="current-password"
+                                   placeholder="Password" />
+                        </label>
+                        {% if form.password.errors %}
+                            <p class="text-error text-xs mt-1">{{ form.password.errors|join:", " }}</p>
+                        {% endif %}
+                    </fieldset>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary w-full">
+                            <i class="fas fa-sign-in-alt"></i>Sign In
+                        </button>
+                    </div>
+                </form>
+                <div class="text-center mt-2">
+                    <p class="text-xs text-base-content/60">Contact IT Support if you experience issues.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

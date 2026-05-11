@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+django-auth-ldap = "5.3"
+python-ldap = "3.4"
+django-environ = "*"
+django-phonedir = "==0.3.5"
+
+[dev-packages]
+djlint = "1.36.4"
+ruff = "*"
+
+[requires]
+python_version = "3.14"
+
+[scripts]
+dev = "python src/manage.py runserver"
+test = "python src/manage.py test"

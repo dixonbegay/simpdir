@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}
+    Simple and Important Managed Phone Directory
+{% endblock title %}
+{% block content %}
+    <main>
+        <form action="{% url 'search_results' %}" method="get">
+            <div class="join w-full max-w-lg">
+                <input class="input input-bordered join-item flex-1"
+                       name="q"
+                       type="text"
+                       placeholder="Search for a name.">
+                <button type="submit" class="btn btn-primary join-item">Search</button>
+            </div>
+        </form>
+        <div class="divider mt-6"></div>
+        <h2 class="text-xl font-bold mb-4">Departments</h2>
+        <div class="flex flex-col gap-4">
+            {% for dept in departments %}
+                <div class="card bg-base-100 shadow">
+                    <div class="card-body">
+                        <a href="{% url 'department_detail' dept.short_name %}">
+                            <h3 class="card-title link-primary link-hover">{{ dept.name }}</h3>
+                        </a>
+                        <p>
+                            <strong>Supervisor:</strong> {{ dept.supervisor.get_full_name|default:dept.supervisor.username }}
+                        </p>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No departments found.</p>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock content %}

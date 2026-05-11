@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+              content="Simple and Important Managed Phone Directory">
+        <meta name="keywords"
+              content="managed, phone, directory, system, it, information, technology, database">
+        <title>SIMPDIR</title>
+        <!-- Apply saved theme before CSS loads to prevent flash -->
+        <script>
+            (function() {
+                var t = localStorage.getItem('theme');
+                if (t) document.documentElement.setAttribute('data-theme', t);
+            })();
+        </script>
+        <!-- DaisyUI + Tailwind CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5"
+              rel="stylesheet"
+              type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <!-- Font Awesome for Icons -->
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    </head>
+    <body class="min-h-screen flex flex-col">
+        <!-- DaisyUI Navbar - Fixed to the top -->
+        <div class="navbar bg-neutral text-neutral-content fixed top-0 z-50 shadow-md">
+            <div class="navbar-start">
+                <a class="btn btn-ghost text-xl font-bold" href="{% url 'home' %}">Phone Directory</a>
+            </div>
+            <div class="navbar-end gap-2">
+                <!-- Mobile: hamburger dropdown -->
+                <div class="dropdown dropdown-end lg:hidden">
+                    <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             class="h-5 w-5"
+                             fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </div>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content bg-base-100 text-base-content rounded-box z-10 mt-3 w-52 p-2 shadow">
+                        <li>
+                            <label class="flex items-center justify-between cursor-pointer">
+                                <span><i class="fas fa-moon mr-2"></i>Dark Mode</span>
+                                <input type="checkbox" class="toggle toggle-sm theme-toggle-btn" />
+                            </label>
+                        </li>
+                        {% if user.is_authenticated and user.is_superuser or user.is_staff %}
+                            <li>
+                                <a href="{% url 'admin:index' %}"><i class="fas fa-user-circle mr-2"></i>Admin</a>
+                            </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <li>
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="text-error w-full text-left">
+                                        <i class="fas fa-sign-out-alt mr-2"></i>Log Out
+                                    </button>
+                                </form>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt mr-2"></i>Log In</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <!-- Desktop: inline items -->
+                <div class="hidden lg:flex items-center gap-2">
+                    <label class="flex items-center gap-2 cursor-pointer btn btn-ghost btn-sm">
+                        <i class="fas fa-moon"></i>
+                        <span>Dark Mode</span>
+                        <input type="checkbox" class="toggle toggle-sm theme-toggle-btn" />
+                    </label>
+                    {% if user.is_authenticated and user.is_superuser or user.is_staff %}
+                        <a class="btn btn-ghost btn-sm" href="{% url 'admin:index' %}">
+                            <i class="fas fa-user-circle"></i>Admin
+                        </a>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-error btn-sm">
+                                <i class="fas fa-sign-out-alt"></i>Log Out
+                            </button>
+                        </form>
+                    {% else %}
+                        <a class="btn btn-ghost btn-sm" href="{% url 'login' %}">
+                            <i class="fas fa-sign-in-alt"></i>Log In
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="flex-1 pt-16">
+            <section class="p-8">
+                <div class="container mx-auto">
+                    <!-- TITLE BLOCK: Overridden by child templates -->
+                    <h1 class="text-3xl font-bold mb-6">
+                        {% block title %}
+                        {% endblock title %}
+                    </h1>
+                    <div>
+                        <!-- CONTENT BLOCK: Overridden by child templates -->
+                        {% block content %}
+                        {% endblock content %}
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer class="footer footer-center bg-base-200 text-base-content p-6">
+            <div>
+                <p>
+                    <a href="https://github.com/dixonbegay/simpdir" target="_blank">
+                        <strong>Simple and Important Managed Phone Directory</strong>
+                    </a>
+                </p>
+                <p class="text-xs">
+                    Powered by <a href="https://www.djangoproject.com/" target="_blank">Django</a> & <a href="https://daisyui.com/" target="_blank">DaisyUI</a>
+                </p>
+            </div>
+        </footer>
+        <script>
+            (function() {
+                var toggles = document.querySelectorAll('.theme-toggle-btn');
+                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                toggles.forEach(function(t) {
+                    t.checked = isDark;
+                });
+                toggles.forEach(function(toggle) {
+                    toggle.addEventListener('change', function() {
+                        var theme = this.checked ? 'dark' : 'light';
+                        document.documentElement.setAttribute('data-theme', theme);
+                        localStorage.setItem('theme', theme);
+                        toggles.forEach(function(t) {
+                            t.checked = theme === 'dark';
+                        });
+                    });
+                });
+            })();
+        </script>
+    </body>
+</html>

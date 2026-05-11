@@ -1,0 +1,11 @@
+{
+    "username": "uid",
+    "first_name": "givenName",
+    "last_name": "sn",
+    "email": "mail",
+    "title": "title",
+    "description": "description",
+    "department": "department",
+    "telephoneNumber": "telephoneNumber",
+    "mobile": "mobile"
+}
