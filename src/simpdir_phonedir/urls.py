@@ -2,14 +2,14 @@ from django.urls import path
 
 from .views import (  # Assuming views.py is in the same app folder
     DepartmentDetailView,
-    DepartmentListView,
+    # DepartmentListView,
     SearchResultsView,
     home_view,
 )
 
 urlpatterns = [
     path("", home_view, name="home"),
-    path("departments", DepartmentListView.as_view(), name="department_list"),
+    # path("departments", DepartmentListView.as_view(), name="department_list"),
     path(
         "department/<slug:short_name>/",
         DepartmentDetailView.as_view(),
