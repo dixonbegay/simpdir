@@ -1,20 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Login{% endblock title %}
+{% block title %}
+    Login
+{% endblock title %}
 {% block content %}
     <div class="flex justify-center">
         <div class="card bg-base-100 shadow-xl w-full max-w-md">
             <div class="card-body">
                 <h2 class="card-title text-xl justify-center">SIMPDIR Login</h2>
-                <p class="text-sm text-center text-base-content/70 mb-2">Use your corporate Active Directory credentials.</p>
+                <p class="text-sm text-center text-base-content/70 mb-2">Use your domain credentials.</p>
                 <form method="post">
                     {% csrf_token %}
                     {% if form.non_field_errors %}
                         <div role="alert" class="alert alert-error mb-4">
                             <i class="fas fa-circle-xmark"></i>
                             <div>
-                                {% for error in form.non_field_errors %}
-                                    <p>{{ error }}</p>
-                                {% endfor %}
+                                {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
                             </div>
                         </div>
                     {% endif %}
@@ -28,9 +28,7 @@
                                    autocomplete="username"
                                    placeholder="AD Username (e.g., jsmith)" />
                         </label>
-                        {% if form.username.errors %}
-                            <p class="text-error text-xs mt-1">{{ form.username.errors|join:", " }}</p>
-                        {% endif %}
+                        {% if form.username.errors %}<p class="text-error text-xs mt-1">{{ form.username.errors|join:", " }}</p>{% endif %}
                     </fieldset>
                     <fieldset class="fieldset">
                         <legend class="fieldset-legend">Password</legend>
@@ -41,9 +39,7 @@
                                    autocomplete="current-password"
                                    placeholder="Password" />
                         </label>
-                        {% if form.password.errors %}
-                            <p class="text-error text-xs mt-1">{{ form.password.errors|join:", " }}</p>
-                        {% endif %}
+                        {% if form.password.errors %}<p class="text-error text-xs mt-1">{{ form.password.errors|join:", " }}</p>{% endif %}
                     </fieldset>
                     <input type="hidden" name="next" value="{{ next }}" />
                     <div class="mt-4">
