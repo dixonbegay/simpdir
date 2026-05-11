@@ -4,7 +4,7 @@ A phone directory that is LDAP compatible.
 
 ## Configuration
 
-Use a .env file in the root directory to set environment variables that will be required. Below are instructions as to what needs to be configured.
+Use a .env file in the root directory to set environment variables that will be required. Below are instructions as to what needs to be configured. The `.env` file should be placed in `src` directory.
 
 Set `LDAP_SUPERUSER_GROUP` to a distinguished name of a group that will be your superadmins.<br>
 Example:`LDAP_SUPERUSER_GROUP=cn=admins,cn=groups,cn=accounts,dc=example,dc=com`
