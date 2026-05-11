@@ -22,9 +22,6 @@
                         <a href="{% url 'department_detail' dept.short_name %}">
                             <h3 class="card-title link-primary link-hover">{{ dept.name }}</h3>
                         </a>
-                        <p>
-                            <strong>Supervisor:</strong> {{ dept.supervisor.get_full_name|default:dept.supervisor.username }}
-                        </p>
                     </div>
                 </div>
             {% empty %}
