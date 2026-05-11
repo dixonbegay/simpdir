@@ -31,6 +31,8 @@ PHONENUMBER_DEFAULT_FORMAT=NATIONAL
 PHONENUMBER_DEFAULT_REGION=US
 ```
 
+NOTE: The group you specify in `LDAP_SUPERUSER_GROUP` will also be identified in the Django web application as staff as well, meaning `is_staff` will return true for each of these users. To change this behavior, you can edit the code in `src/conf/settings.py`.
+
 ### Using Windows Active Directory?
 Below is what you should set in the user-attributes-map.json file if your directory service is Windows Active Directory.
 
