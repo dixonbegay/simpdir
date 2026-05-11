@@ -19,7 +19,7 @@ python_version = "3.14"
 
 [scripts]
 runserver = "python src/manage.py runserver"
-makemigrations = "python manage.py makemigrations"
-migrate = "python manage.py migrate"
-shell = "python manage.py shell"
+makemigrations = "python src/manage.py makemigrations"
+migrate = "python src/manage.py migrate"
+shell = "python src/manage.py shell"
 test = "python src/manage.py test"
