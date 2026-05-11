@@ -18,5 +18,8 @@ ruff = "*"
 python_version = "3.14"
 
 [scripts]
-dev = "python src/manage.py runserver"
+runserver = "python src/manage.py runserver"
+makemigrations = "python manage.py makemigrations"
+migrate = "python manage.py migrate"
+shell = "python manage.py shell"
 test = "python src/manage.py test"
