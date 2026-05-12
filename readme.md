@@ -57,7 +57,7 @@ Below are options of what `PHONENUMBER_DEFAULT_FORMAT` can be set to. Please [cl
 - `E.164` - +xxxxxxxxxxx
 - `RFC3966` - tel:+x-xxx-xxx-xxxx
 
-`PHONENUMBER_DEFAULT_REGION` should be set to a two-letting country code based on ISO-3166-1. This indicates how to interpret regional phone numbers. [List of current codes](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes).
+`PHONENUMBER_DEFAULT_REGION` should be set to a two-letter country code based on ISO-3166-1. This indicates how to interpret regional phone numbers. [List of current codes](https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes).
 
 Example configuration is below.
 ```
