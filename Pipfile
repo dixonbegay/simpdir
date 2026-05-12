@@ -8,7 +8,7 @@ django = "*"
 django-auth-ldap = "5.3"
 python-ldap = "3.4"
 django-environ = "*"
-django-phonedir = "==0.3.5"
+django-phonedir = "==0.4"
 
 [dev-packages]
 djlint = "1.36.4"
