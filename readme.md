@@ -2,6 +2,8 @@
 
 A phone directory that is LDAP compatible.
 
+This Django web application is meant to be utilized as an intranet site within an organization.
+
 ## Configuration
 
 Use a .env file in the root directory to set environment variables that will be required. Below are instructions as to what needs to be configured. The `.env` file should be placed in `src` directory.
