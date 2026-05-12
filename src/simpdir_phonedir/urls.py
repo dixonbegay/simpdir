@@ -1,19 +1,8 @@
-from django.urls import path
+from django.urls import include, path
 
-from .views import (  # Assuming views.py is in the same app folder
-    DepartmentDetailView,
-    # DepartmentListView,
-    SearchResultsView,
-    home_view,
-)
+from .views import home_view
 
 urlpatterns = [
     path("", home_view, name="home"),
-    # path("departments", DepartmentListView.as_view(), name="department_list"),
-    path(
-        "department/<slug:short_name>/",
-        DepartmentDetailView.as_view(),
-        name="department_detail",
-    ),
-    path("search/", SearchResultsView.as_view(), name="search_results"),
+    path("", include("django_phonedir.urls")),
 ]
