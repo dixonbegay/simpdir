@@ -14,19 +14,41 @@
             </div>
         </form>
         <div class="divider mt-6"></div>
-        <h2 class="text-xl font-bold mb-4">Departments</h2>
-        <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-2 mb-4">
+            <h2 class="text-xl font-bold">Departments</h2>
+            <button id="sort-az"
+                    class="btn btn-sm btn-secondary"
+                    onclick="sortList(true)">A → Z</button>
+            <button id="sort-za" class="btn btn-sm btn-ghost" onclick="sortList(false)">Z → A</button>
+        </div>
+        <div id="dept-list"
+             class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {% for dept in departments %}
-                <div class="card bg-base-100 shadow">
-                    <div class="card-body">
-                        <a href="{% url 'department_detail' dept.short_name %}">
-                            <h3 class="card-title link-primary link-hover">{{ dept.name }}</h3>
-                        </a>
+                <div class="card bg-base-100 shadow" data-name="{{ dept.name }}">
+                    <div class="card-body p-4">
+                        <a class="link link-hover link-primary font-medium"
+                           href="{% url 'department_detail' dept.short_name %}">{{ dept.name }}</a>
                     </div>
                 </div>
             {% empty %}
-                <p>No departments found.</p>
+                <p class="col-span-4">No departments found.</p>
             {% endfor %}
         </div>
     </main>
+    <script>
+        function sortList(asc) {
+            var list = document.getElementById('dept-list');
+            var items = Array.from(list.querySelectorAll('div[data-name]'));
+            items.sort(function(a, b) {
+                return asc ?
+                    a.dataset.name.localeCompare(b.dataset.name) :
+                    b.dataset.name.localeCompare(a.dataset.name);
+            });
+            items.forEach(function(item) {
+                list.appendChild(item);
+            });
+            document.getElementById('sort-az').className = asc ? 'btn btn-sm btn-secondary' : 'btn btn-sm btn-ghost';
+            document.getElementById('sort-za').className = asc ? 'btn btn-sm btn-ghost' : 'btn btn-sm btn-secondary';
+        }
+    </script>
 {% endblock content %}
