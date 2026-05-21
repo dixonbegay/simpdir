@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-django-auth-ldap = "5.3"
-python-ldap = "3.4"
-django-environ = "*"
-django-phonedir = "==0.4"
+django = "==6.0.3"
+django-auth-ldap = "==5.3"
+python-ldap = "==3.4"
+django-environ = "==0.13.0"
+django-phonedir = "==0.5.2"
 
 [dev-packages]
 djlint = "1.36.4"
