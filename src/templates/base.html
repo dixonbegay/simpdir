@@ -19,6 +19,9 @@
         <link href="https://cdn.jsdelivr.net/npm/daisyui@5"
               rel="stylesheet"
               type="text/css" />
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+              rel="stylesheet"
+              type="text/css" />
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <!-- Font Awesome for Icons -->
         <link rel="stylesheet"
@@ -45,10 +48,109 @@
                     <ul tabindex="0"
                         class="menu menu-sm dropdown-content bg-base-100 text-base-content rounded-box z-10 mt-3 w-52 p-2 shadow">
                         <li>
-                            <label class="flex items-center justify-between cursor-pointer">
-                                <span><i class="fas fa-moon mr-2"></i>Dark Mode</span>
-                                <input type="checkbox" class="toggle toggle-sm theme-toggle-btn" />
-                            </label>
+                            <details>
+                                <summary>
+                                    <i class="fas fa-palette mr-2"></i>Theme: <span class="theme-label font-medium">light</span>
+                                </summary>
+                                <ul class="max-h-48 overflow-y-auto">
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('light')">light</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('dark')">dark</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('cupcake')">cupcake</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('bumblebee')">bumblebee</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('emerald')">emerald</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('corporate')">corporate</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('synthwave')">synthwave</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('retro')">retro</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('cyberpunk')">cyberpunk</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('valentine')">valentine</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('halloween')">halloween</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('garden')">garden</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('forest')">forest</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('aqua')">aqua</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('lofi')">lofi</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('pastel')">pastel</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('fantasy')">fantasy</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('wireframe')">wireframe</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('black')">black</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('luxury')">luxury</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('dracula')">dracula</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('cmyk')">cmyk</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('autumn')">autumn</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('business')">business</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('acid')">acid</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('lemonade')">lemonade</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('night')">night</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('coffee')">coffee</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('winter')">winter</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('dim')">dim</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('nord')">nord</button>
+                                    </li>
+                                    <li>
+                                        <button class="w-full text-left" onclick="setTheme('sunset')">sunset</button>
+                                    </li>
+                                </ul>
+                            </details>
                         </li>
                         {% if user.is_authenticated and user.is_superuser or user.is_staff %}
                             <li>
@@ -73,13 +175,113 @@
                 </div>
                 <!-- Desktop: inline items -->
                 <div class="hidden lg:flex items-center gap-2">
-                    <label class="flex items-center gap-2 cursor-pointer btn btn-ghost btn-sm">
-                        <i class="fas fa-moon"></i>
-                        <span>Dark Mode</span>
-                        <input type="checkbox" class="toggle toggle-sm theme-toggle-btn" />
-                    </label>
+                    <div class="dropdown dropdown-end">
+                        <i class="fas fa-palette mr-2"></i>Theme:
+                        <div tabindex="0" role="button" class="btn btn-ghost">
+                            <span class="theme-label">light</span>
+                        </div>
+                        <ul tabindex="0"
+                            class="dropdown-content menu bg-base-100 text-base-content rounded-box z-10 w-36 max-h-80 overflow-y-auto p-2 shadow flex-nowrap">
+                            <li>
+                                <button onclick="setTheme('light')">light</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('dark')">dark</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('cupcake')">cupcake</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('bumblebee')">bumblebee</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('emerald')">emerald</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('corporate')">corporate</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('synthwave')">synthwave</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('retro')">retro</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('cyberpunk')">cyberpunk</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('valentine')">valentine</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('halloween')">halloween</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('garden')">garden</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('forest')">forest</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('aqua')">aqua</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('lofi')">lofi</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('pastel')">pastel</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('fantasy')">fantasy</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('wireframe')">wireframe</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('black')">black</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('luxury')">luxury</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('dracula')">dracula</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('cmyk')">cmyk</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('autumn')">autumn</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('business')">business</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('acid')">acid</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('lemonade')">lemonade</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('night')">night</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('coffee')">coffee</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('winter')">winter</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('dim')">dim</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('nord')">nord</button>
+                            </li>
+                            <li>
+                                <button onclick="setTheme('sunset')">sunset</button>
+                            </li>
+                        </ul>
+                    </div>
                     {% if user.is_authenticated and user.is_superuser or user.is_staff %}
-                        <a class="btn btn-ghost btn-sm" href="{% url 'admin:index' %}">
+                        <a class="btn btn-ghost" href="{% url 'admin:index' %}">
                             <i class="fas fa-user-circle"></i>Admin
                         </a>
                     {% endif %}
@@ -127,23 +329,18 @@
             </div>
         </footer>
         <script>
-            (function() {
-                var toggles = document.querySelectorAll('.theme-toggle-btn');
-                var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                toggles.forEach(function(t) {
-                    t.checked = isDark;
+            window.setTheme = function(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                document.querySelectorAll('.theme-label').forEach(function(el) {
+                    el.textContent = theme;
                 });
-                toggles.forEach(function(toggle) {
-                    toggle.addEventListener('change', function() {
-                        var theme = this.checked ? 'dark' : 'light';
-                        document.documentElement.setAttribute('data-theme', theme);
-                        localStorage.setItem('theme', theme);
-                        toggles.forEach(function(t) {
-                            t.checked = theme === 'dark';
-                        });
-                    });
-                });
-            })();
+            };
+            // Initialise labels from the theme already applied by the head script
+            var current = document.documentElement.getAttribute('data-theme') || 'light';
+            document.querySelectorAll('.theme-label').forEach(function(el) {
+                el.textContent = current;
+            });
         </script>
     </body>
 </html>
