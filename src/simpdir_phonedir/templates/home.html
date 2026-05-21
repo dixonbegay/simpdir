@@ -9,7 +9,7 @@
                 <input class="input input-bordered join-item flex-1"
                        name="q"
                        type="text"
-                       placeholder="Search for a name.">
+                       placeholder="Search for a name, title, or department.">
                 <button type="submit" class="btn btn-primary join-item">Search</button>
             </div>
         </form>
@@ -26,7 +26,7 @@
             {% for dept in departments %}
                 <div class="card bg-base-100 shadow" data-name="{{ dept.name }}">
                     <div class="card-body p-4">
-                        <a class="link link-hover link-primary font-medium"
+                        <a class="link link-hover text-xl font-semibold"
                            href="{% url 'department_detail' dept.short_name %}">{{ dept.name }}</a>
                     </div>
                 </div>
