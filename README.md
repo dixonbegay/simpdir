@@ -68,9 +68,14 @@ PHONENUMBER_DEFAULT_REGION=US
 ```
 
 ## Developing and Contributing
-To setup and load test data, do the following.<br>
-1. Run `pipenv run python manage.py makemigrations`
-2. Run `pipenv run python manage.py migrate`
-3. Run `pipenv run python manage.py ldap_sync_users`
-4. Run `pipenv run python manage.py loaddata db.json`
-4. Run `pipenv run python manage.py runserver`
+This project uses [uv](https://docs.astral.sh/uv/) for package management and project management. To setup and load test data, do the following.<br>
+1. `uv sync`
+2. `uv run src/manage.py makemigrations`
+3. `uv run src/manage.py migrate`
+4. `uv run src/manage.py ldap_sync_users`
+5. `uv run src/manage.py loaddata db.json`
+6. `uv run src/manage.py runserver`
+
+### Testing
+To run tests, run the following command.<br>
+`uv run src/manage.py test`
