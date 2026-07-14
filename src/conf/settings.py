@@ -21,14 +21,16 @@ from django_auth_ldap.config import GroupOfNamesType, LDAPGroupQuery, LDAPSearch
 # Default values
 env = environ.Env(
     # set casting, default value
-    ALLOWED_HOSTS_LISTS=(list, []),
+    ALLOWED_HOSTS_LIST=(list, []),
     AUTH_LDAP_BIND_AS_AUTHENTICATING_USER=(bool, True),
+    CSRF_TRUSTED_ORIGINS_LIST=(list, []),
     DEBUG=(bool, False),
     LDAP_TLS_REQUIRE_CERT=(bool, True),
     LDAP_SUPERUSER_GROUP=(str, ""),
     PHONENUMBER_DEFAULT_REGION=(str, "US"),
     PHONENUMBER_DEFAULT_FORMAT=(str, "NATIONAL"),
     TIME_ZONE=(str, "UTC"),
+    DJANGO_PRODUCTION=(bool, True),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -60,7 +62,8 @@ LOGGING = {
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
 
-ALLOWED_HOSTS = env("ALLOWED_HOSTS_LISTS")
+ALLOWED_HOSTS = env("ALLOWED_HOSTS_LIST"))
+CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS_LIST")
 
 # Application definition
 
