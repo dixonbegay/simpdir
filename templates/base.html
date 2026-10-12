@@ -168,7 +168,7 @@
                             </li>
                         {% else %}
                             <li>
-                                <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt mr-2"></i>Log In</a>
+                                <a class="text-primary" href="{% url 'login' %}"><i class="fas fa-sign-in-alt mr-2"></i>Log In</a>
                             </li>
                         {% endif %}
                     </ul>
@@ -295,7 +295,7 @@
                             </button>
                         </form>
                     {% else %}
-                        <a class="btn btn-ghost btn-sm" href="{% url 'login' %}">
+                        <a class="btn btn-primary btn-sm" href="{% url 'login' %}">
                             <i class="fas fa-sign-in-alt"></i>Log In
                         </a>
                     {% endif %}
