@@ -31,12 +31,12 @@
         <!-- DaisyUI Navbar - Fixed to the top -->
         <div class="navbar bg-neutral text-neutral-content fixed top-0 z-50 shadow-md">
             <div class="navbar-start">
-                <a class="btn btn-ghost text-xl font-bold" href="{% url 'home' %}">Phone Directory</a>
+                <a class="btn btn-ghost text-xl font-bold text-neutral-content" href="{% url 'home' %}">Phone Directory</a>
             </div>
             <div class="navbar-end gap-2">
                 <!-- Mobile: hamburger dropdown -->
                 <div class="dropdown dropdown-end lg:hidden">
-                    <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+                    <div tabindex="0" role="button" class="btn btn-ghost btn-sm text-neutral-content">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              class="h-5 w-5"
                              fill="none"
@@ -283,7 +283,7 @@
                         </ul>
                     </div>
                     {% if user.is_authenticated and user.is_superuser or user.is_staff %}
-                        <a class="btn btn-ghost" href="{% url 'admin:index' %}">
+                        <a class="btn btn-ghost text-neutral-content" href="{% url 'admin:index' %}">
                             <i class="fas fa-user-circle"></i>Admin
                         </a>
                     {% endif %}
